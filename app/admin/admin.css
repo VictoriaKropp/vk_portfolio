@@ -1,0 +1,289 @@
+/* ============================================
+   ADMIN.CSS — Victoria Kropp
+   Paleta: misma que portfolio
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background-color: #161616;
+  color: #e8e8e8;
+  font-family: system-ui, sans-serif;
+}
+
+/* SIDEBAR */
+.admin-sidebar {
+  width: 220px;
+  min-height: 100vh;
+  background-color: #0e0e0e;
+  border-right: 0.5px solid #2a2a2a;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.admin-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #8b1a2e;
+  letter-spacing: 2px;
+}
+
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.admin-nav a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.admin-nav a:hover {
+  background-color: #1a0a0e;
+  color: #cc3344;
+}
+
+/* MAIN */
+.admin-main {
+  margin-left: 220px;
+  padding: 3rem;
+  flex: 1;
+}
+
+/* DASHBOARD */
+.admin-dashboard h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #e8e8e8;
+  margin-bottom: 2rem;
+}
+
+/* SECTIONS */
+.admin-section h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #e8e8e8;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.5px solid #2a2a2a;
+}
+
+.admin-section > button {
+  margin-bottom: 1.5rem;
+}
+
+/* LIST */
+.admin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.admin-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  background-color: #0e0e0e;
+  border: 0.5px solid #2a2a2a;
+  border-radius: 6px;
+}
+
+.admin-list-item span {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.admin-list-item div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* FORM */
+.admin-form {
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-form h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #e8e8e8;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.5px solid #2a2a2a;
+}
+
+.admin-form input,
+.admin-form textarea {
+  background-color: #0e0e0e;
+  border: 0.5px solid #2a2a2a;
+  border-radius: 4px;
+  padding: 0.8rem 1rem;
+  color: #e8e8e8;
+  font-size: 0.95rem;
+  font-family: system-ui, sans-serif;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+  outline: none;
+  border-color: #8b1a2e;
+}
+
+.admin-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.admin-form label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #aaa;
+  font-size: 0.95rem;
+}
+
+.admin-form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* BUTTONS */
+button {
+  background-color: #8b1a2e;
+  color: #e8e8e8;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #cc3344;
+}
+
+/* LOGIN */
+.admin-login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: #161616;
+  padding: 2rem;
+}
+
+.admin-login h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #8b1a2e;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.admin-login input {
+  width: 100%;
+  max-width: 360px;
+  background-color: #0e0e0e;
+  border: 0.5px solid #2a2a2a;
+  border-radius: 4px;
+  padding: 0.8rem 1rem;
+  color: #e8e8e8;
+  font-size: 0.95rem;
+}
+
+.admin-login input:focus {
+  outline: none;
+  border-color: #8b1a2e;
+}
+
+.admin-login button {
+  width: 100%;
+  max-width: 360px;
+  padding: 0.8rem;
+}
+
+.admin-login-error {
+  color: #cc3344;
+  font-size: 0.9rem;
+}
+
+.admin-project-item {
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid #2a2a2a;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.admin-project-item .admin-list-item {
+  border: none;
+  border-radius: 0;
+}
+
+.admin-modules {
+  background-color: #0a0a0a;
+  border-top: 0.5px solid #2a2a2a;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-module-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  background-color: #111;
+  border: 0.5px solid #222;
+  border-radius: 4px;
+}
+
+.admin-module-item span {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.admin-module-add {
+  margin-top: 0.5rem;
+  background-color: transparent;
+  border: 0.5px dashed #8b1a2e;
+  color: #8b1a2e;
+  padding: 0.5rem;
+}
+
+.admin-module-add:hover {
+  background-color: #1a0a0e;
+}
+
+.admin-preview-img {
+  max-width: 200px;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
