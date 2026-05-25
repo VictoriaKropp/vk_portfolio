@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabase';
+export const revalidate = 0;
 
 export default async function Process() {
   const { data } = await supabase

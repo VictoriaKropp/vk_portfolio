@@ -1,5 +1,6 @@
 import ProjectCard from '@/components/ProjectCard';
 import { supabase } from '@/lib/supabase';
+export const revalidate = 0;
 
 type Module = {
   id: string;

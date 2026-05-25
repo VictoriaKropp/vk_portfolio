@@ -119,7 +119,10 @@ export default function AdminProjects() {
             <textarea placeholder="Descripción" value={editingModule.description} onChange={e => setEditingModule({ ...editingModule, description: e.target.value })} />
             <input type="file" accept="image/*" onChange={handleModuleImageUpload} />
             {editingModule.image_url && (
-                <Image src={editingModule.image_url} alt="preview" width={200} height={200} className="admin-preview-img" />
+                <div className="admin-preview-wrapper">
+                    <Image src={editingModule.image_url} alt="preview" width={200} height={200} className="admin-preview-img" />
+                    <button className="admin-remove-img" onClick={() => setEditingModule({ ...editingModule, image_url: '' })}>Quitar imagen</button>
+                </div>
             )}
             <input placeholder="Orden" type="number" value={editingModule.order} onChange={e => setEditingModule({ ...editingModule, order: Number(e.target.value) })} />
             <div className="admin-form-actions">
@@ -143,7 +146,10 @@ export default function AdminProjects() {
             </label>
             <input type="file" accept="image/*" onChange={handleImageUpload} />
             {editing.image_url && (
-                <Image src={editing.image_url} alt="preview" width={200} height={200} className="admin-preview-img" />
+                <div className="admin-preview-wrapper">
+                    <Image src={editing.image_url} alt="preview" width={200} height={200} className="admin-preview-img" />
+                    <button className="admin-remove-img" onClick={() => setEditing({ ...editing, image_url: '' })}>Quitar imagen</button>
+                </div>
             )}
             <div className="admin-form-actions">
                 <button onClick={handleSaveProject}>Guardar</button>

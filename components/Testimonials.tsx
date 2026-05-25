@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase';
 import Image from 'next/image';
+export const revalidate = 0;
 
 export default async function Testimonials() {
   const { data } = await supabase
