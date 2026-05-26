@@ -23,6 +23,7 @@ type Project = {
 
 export default function ProjectCard({ project }: { project: Project }) {
   const [expanded, setExpanded] = useState<number | null>(null);
+  const [showModules, setShowModules] = useState(false);
 
   return (
     <div className="project-card">
@@ -33,29 +34,42 @@ export default function ProjectCard({ project }: { project: Project }) {
       )}
       <p className="project-description">{project.description}</p>
 
-      <div className="module-list">
-        {project.project_modules.map((mod, i) => (
-          <div key={mod.id} className="module-item">
-            <button
-              onClick={() => setExpanded(expanded === i ? null : i)}
-              className={expanded === i ? 'module-button active' : 'module-button'}
-            >
-              <span className={expanded === i ? 'module-button-title active' : 'module-button-title'}>
-                {mod.title}
-              </span>
-              <span className="module-icon">{expanded === i ? '−' : '+'}</span>
-            </button>
-            {expanded === i && (
-              <div className="module-content">
-                <p>{mod.description}</p>
-                {mod.image_url && (
-                  <Image src={mod.image_url} alt={mod.title} width={800} height={450} className="module-image" unoptimized />
-                )}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+      {project.project_modules.length > 0 && (
+        <>
+          <button
+            className="modules-toggle"
+            onClick={() => { setShowModules(!showModules); setExpanded(null); }}
+          >
+            {showModules ? 'Hide modules −' : 'View modules +'}
+          </button>
+
+          {showModules && (
+            <div className="module-list">
+              {project.project_modules.map((mod, i) => (
+                <div key={mod.id} className="module-item">
+                  <button
+                    onClick={() => setExpanded(expanded === i ? null : i)}
+                    className={expanded === i ? 'module-button active' : 'module-button'}
+                  >
+                    <span className={expanded === i ? 'module-button-title active' : 'module-button-title'}>
+                      {mod.title}
+                    </span>
+                    <span className="module-icon">{expanded === i ? '−' : '+'}</span>
+                  </button>
+                  {expanded === i && (
+                    <div className="module-content">
+                      <p>{mod.description}</p>
+                      {mod.image_url && (
+                        <Image src={mod.image_url} alt={mod.title} width={800} height={450} className="module-image" unoptimized />
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </>
+      )}
 
       {project.link && (
         <div className="project-link-wrapper">

@@ -228,6 +228,18 @@ body {
   margin-bottom: 2rem;
 }
 
+.modules-toggle {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  color: var(--color-accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
 /* Módulos expandibles dentro de project-card */
 .module-item {
   border: 0.5px solid #222;
