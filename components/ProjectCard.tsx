@@ -29,7 +29,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       <p className="project-tag">{project.tag}</p>
       <h3 className="project-title">{project.title}</h3>
       {project.image_url && (
-        <Image src={project.image_url} alt={project.title} width={800} height={450} className="project-image" />
+        <Image src={project.image_url} alt={project.title} width={800} height={450} className="project-image" unoptimized />
       )}
       <p className="project-description">{project.description}</p>
 
@@ -49,7 +49,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               <div className="module-content">
                 <p>{mod.description}</p>
                 {mod.image_url && (
-                  <Image src={mod.image_url} alt={mod.title} width={800} height={450} className="module-image" />
+                  <Image src={mod.image_url} alt={mod.title} width={800} height={450} className="module-image" unoptimized />
                 )}
               </div>
             )}
