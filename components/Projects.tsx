@@ -39,7 +39,7 @@ export default async function Projects() {
         <ProjectCard key={project.id} project={project} />
       ))}
 
-      <p className="projects-more">More projects coming soon.</p>
+      <p className="projects-more"></p>
     </section>
   );
 }
