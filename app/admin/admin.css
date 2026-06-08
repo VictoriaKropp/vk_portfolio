@@ -1,5 +1,6 @@
 /* ============================================
    ADMIN.CSS — Victoria Kropp
+   Mobile first · Responsive
    Paleta: misma que portfolio
    ============================================ */
 
@@ -9,6 +10,20 @@
   padding: 0;
 }
 
+/* ============================================
+   BASE
+   ============================================ */
+
+body {
+  background-color: #161616;
+  color: #e8e8e8;
+  font-family: system-ui, sans-serif;
+}
+
+/* ============================================
+   LAYOUT WRAPPER
+   ============================================ */
+
 .admin-wrapper {
   display: flex;
   min-height: 100vh;
@@ -17,7 +32,73 @@
   font-family: system-ui, sans-serif;
 }
 
-/* SIDEBAR */
+/* ============================================
+   TOPBAR (mobile)
+   ============================================ */
+
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.2rem;
+  background-color: #0e0e0e;
+  border-bottom: 0.5px solid #2a2a2a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+}
+
+.admin-topbar .admin-logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #8b1a2e;
+  letter-spacing: 2px;
+}
+
+.admin-hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+
+.admin-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #aaa;
+  transition: background-color 0.2s;
+}
+
+.admin-hamburger:hover span {
+  background-color: #cc3344;
+}
+
+/* ============================================
+   OVERLAY (mobile sidebar abierta)
+   ============================================ */
+
+.admin-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 150;
+}
+
+.admin-overlay.open {
+  display: block;
+}
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+
 .admin-sidebar {
   width: 220px;
   min-height: 100vh;
@@ -30,9 +111,16 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 160;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
 }
 
-.admin-logo {
+.admin-sidebar.open {
+  transform: translateX(0);
+}
+
+.admin-sidebar .admin-logo {
   font-size: 1.2rem;
   font-weight: 700;
   color: #8b1a2e;
@@ -54,41 +142,100 @@
   transition: background-color 0.2s, color 0.2s;
 }
 
-.admin-nav a:hover {
+.admin-nav a:hover,
+.admin-nav a.active {
   background-color: #1a0a0e;
   color: #cc3344;
 }
 
-/* MAIN */
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+
 .admin-main {
-  margin-left: 220px;
-  padding: 3rem;
   flex: 1;
+  padding: 5rem 1.2rem 2rem;
+  width: 100%;
 }
 
-/* DASHBOARD */
+/* ============================================
+   DASHBOARD
+   ============================================ */
+
 .admin-dashboard h1 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #e8e8e8;
+  margin-bottom: 0.4rem;
+}
+
+.admin-dashboard p {
+  color: #666;
+  font-size: 0.9rem;
   margin-bottom: 2rem;
 }
 
-/* SECTIONS */
-.admin-section h2 {
+.admin-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.admin-dashboard-card {
+  display: block;
+  background-color: #0e0e0e;
+  border: 0.5px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 1.2rem 1rem;
+  text-decoration: none;
+  color: #e8e8e8;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.admin-dashboard-card:hover {
+  border-color: #8b1a2e;
+  background-color: #1a0a0e;
+}
+
+.admin-dashboard-card-icon {
   font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-dashboard-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  margin-bottom: 0.2rem;
+}
+
+.admin-dashboard-card-desc {
+  font-size: 0.8rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+
+.admin-section h2 {
+  font-size: 1.3rem;
   font-weight: 700;
   color: #e8e8e8;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   padding-bottom: 0.5rem;
   border-bottom: 0.5px solid #2a2a2a;
 }
 
 .admin-section > button {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
-/* LIST */
+/* ============================================
+   LIST
+   ============================================ */
+
 .admin-list {
   display: flex;
   flex-direction: column;
@@ -99,23 +246,33 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.2rem;
+  padding: 0.9rem 1rem;
   background-color: #0e0e0e;
   border: 0.5px solid #2a2a2a;
   border-radius: 6px;
+  gap: 0.8rem;
 }
 
 .admin-list-item span {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #ccc;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .admin-list-item div {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  flex-shrink: 0;
 }
 
-/* FORM */
+/* ============================================
+   FORM
+   ============================================ */
+
 .admin-form {
   max-width: 680px;
   display: flex;
@@ -124,7 +281,7 @@
 }
 
 .admin-form h2 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #e8e8e8;
   margin-bottom: 0.5rem;
@@ -167,17 +324,21 @@
 .admin-form-actions {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
   margin-top: 0.5rem;
 }
 
-/* BUTTONS */
+/* ============================================
+   BUTTONS
+   ============================================ */
+
 button {
   background-color: #8b1a2e;
   color: #e8e8e8;
   border: none;
   border-radius: 4px;
-  padding: 0.6rem 1.2rem;
-  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.88rem;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -186,7 +347,10 @@ button:hover {
   background-color: #cc3344;
 }
 
-/* LOGIN */
+/* ============================================
+   LOGIN
+   ============================================ */
+
 .admin-login {
   min-height: 100vh;
   display: flex;
@@ -233,6 +397,10 @@ button:hover {
   font-size: 0.9rem;
 }
 
+/* ============================================
+   PROJECTS — items con módulos
+   ============================================ */
+
 .admin-project-item {
   display: flex;
   flex-direction: column;
@@ -249,7 +417,7 @@ button:hover {
 .admin-modules {
   background-color: #0a0a0a;
   border-top: 0.5px solid #2a2a2a;
-  padding: 1rem 1.2rem;
+  padding: 0.8rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -263,11 +431,17 @@ button:hover {
   background-color: #111;
   border: 0.5px solid #222;
   border-radius: 4px;
+  gap: 0.6rem;
 }
 
 .admin-module-item span {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: #aaa;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .admin-module-add {
@@ -282,8 +456,13 @@ button:hover {
   background-color: #1a0a0e;
 }
 
+/* ============================================
+   IMAGE PREVIEW
+   ============================================ */
+
 .admin-preview-img {
-  max-width: 200px;
+  max-width: 100%;
+  width: 200px;
   border-radius: 4px;
   margin-top: 0.5rem;
 }
@@ -302,4 +481,53 @@ button:hover {
   border: none;
   cursor: pointer;
   padding: 0;
+}
+
+/* ============================================
+   RESPONSIVE — tablet (768px+)
+   ============================================ */
+
+@media (min-width: 768px) {
+  .admin-topbar {
+    display: none;
+  }
+
+  .admin-overlay {
+    display: none !important;
+  }
+
+  .admin-sidebar {
+    transform: translateX(0);
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .admin-main {
+    margin-left: 220px;
+    padding: 3rem;
+  }
+
+  .admin-dashboard-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .admin-list-item span {
+    white-space: normal;
+  }
+
+  .admin-module-item span {
+    white-space: normal;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — desktop (1024px+)
+   ============================================ */
+
+@media (min-width: 1024px) {
+  .admin-dashboard-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

@@ -7,6 +7,7 @@ import Skills from '@/components/Skills';
 import Process from '@/components/Process';
 import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
+import Chatbot from '@/components/Chatbot';
 
 export default async function Home() {
     return (
@@ -19,6 +20,7 @@ export default async function Home() {
       <Process />
       <Testimonials />
       <Contact />
+      <Chatbot />
     </main>
   );
 }
