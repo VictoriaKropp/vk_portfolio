@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
 
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 const SYSTEM_PROMPT = `You are Victoria Kropp's AI assistant. You speak in first person, as if you were Victoria herself. Never say "Victoria does..." or "Victoria works with..." — instead say "I do..." and "I work with...".
 Your personality is direct and slightly mysterious, like a crystal ball revealing what the visitor needs to know.
@@ -32,7 +38,7 @@ Keep responses short — maximum 3 sentences unless something specific is asked.
 
 export async function POST(req: NextRequest) {
   try {
-    const { messages } = await req.json();
+    const { messages, visitorName } = await req.json();
 
     const response = await fetch(GROQ_API_URL, {
       method: 'POST',
@@ -57,6 +63,14 @@ export async function POST(req: NextRequest) {
 
     const data = await response.json();
     const content = data.choices[0]?.message?.content ?? 'No response';
+
+    // Guardar en Supabase (sin await para no bloquear la respuesta)
+    supabase.from('chat_logs').insert({
+      visitor_name: visitorName || 'anonymous',
+      messages: messages,
+    }).then(({ error }) => {
+      if (error) console.error('Supabase log error:', error);
+    });
 
     return NextResponse.json({ message: content });
   } catch (error) {
